@@ -1,11 +1,252 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+
+    <title>NIGHTZONE | Discoteca</title>
+
+    <link rel="stylesheet" href="styles.css" />
   </head>
+
   <body>
-    <h1>Hello, World!</h1>
+    <!-- NAVBAR -->
+    <header class="navbar">
+      <div class="logo">NIGHT<span>ZONE</span></div>
+
+      <nav>
+        <a href="#inicio">Inicio</a>
+        <a href="#eventos">Eventos</a>
+        <a href="#promociones">Promociones</a>
+        <a href="#nosotros">Nosotros</a>
+      </nav>
+
+      <button class="menu-btn" onclick="toggleMenu()">☰</button>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero" id="inicio">
+      <div class="hero-content">
+        <p class="subtitle">LA NOCHE COMIENZA AQUÍ</p>
+
+        <h1>
+          VIVE LA
+          <span>NOCHE</span>
+        </h1>
+
+        <p>
+          Música, luces y experiencias que no olvidarás. Descubre nuestros
+          próximos eventos.
+        </p>
+
+        <div class="hero-buttons">
+          <a href="#eventos" class="btn primary"> Ver eventos </a>
+
+          <a href="#promociones" class="btn secondary"> Promociones </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- EVENTOS -->
+    <section class="section" id="eventos">
+      <div class="section-header">
+        <div>
+          <p class="section-tag">PRÓXIMOS EVENTOS</p>
+
+          <h2>
+            Esta noche
+            <span>pasa algo.</span>
+          </h2>
+        </div>
+
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="Buscar evento..."
+          onkeyup="searchEvents()"
+        />
+      </div>
+
+      <div class="events-grid" id="eventsContainer">
+        <!-- EVENTO 1 -->
+        <article class="event-card">
+          <div class="event-image event-1">
+            <span class="date"> 27 SEP </span>
+
+            <button class="favorite" onclick="toggleFavorite(this)">♡</button>
+          </div>
+
+          <div class="event-info">
+            <p class="event-type">REGGAETÓN</p>
+
+            <h3>Perreo Night</h3>
+
+            <p>DJ Alex • DJ Nando</p>
+
+            <div class="event-bottom">
+              <strong> S/ 30 </strong>
+
+              <button
+                class="reserve-btn"
+                onclick="reserveEvent('Perreo Night')"
+              >
+                Reservar
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- EVENTO 2 -->
+        <article class="event-card">
+          <div class="event-image event-2">
+            <span class="date"> 28 SEP </span>
+
+            <button class="favorite" onclick="toggleFavorite(this)">♡</button>
+          </div>
+
+          <div class="event-info">
+            <p class="event-type">ELECTRÓNICA</p>
+
+            <h3>Neon Festival</h3>
+
+            <p>DJ Marco • Live Set</p>
+
+            <div class="event-bottom">
+              <strong> S/ 40 </strong>
+
+              <button
+                class="reserve-btn"
+                onclick="reserveEvent('Neon Festival')"
+              >
+                Reservar
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- EVENTO 3 -->
+        <article class="event-card">
+          <div class="event-image event-3">
+            <span class="date"> 04 OCT </span>
+
+            <button class="favorite" onclick="toggleFavorite(this)">♡</button>
+          </div>
+
+          <div class="event-info">
+            <p class="event-type">LATIN</p>
+
+            <h3>Latin Explosion</h3>
+
+            <p>Salsa • Bachata • Reggaetón</p>
+
+            <div class="event-bottom">
+              <strong> S/ 35 </strong>
+
+              <button
+                class="reserve-btn"
+                onclick="reserveEvent('Latin Explosion')"
+              >
+                Reservar
+              </button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- PROMOCIONES -->
+    <section class="promotions" id="promociones">
+      <div class="promotion-content">
+        <p class="section-tag">PROMOCIÓN DE LA SEMANA</p>
+
+        <h2>
+          2x1
+          <span>en cocktails</span>
+        </h2>
+
+        <p>
+          Todos los jueves de 10 PM a 12 AM. Ven con tus amigos y disfruta de
+          nuestras mejores promociones.
+        </p>
+
+        <button class="btn primary" onclick="showPromotion()">
+          Ver promoción
+        </button>
+      </div>
+    </section>
+
+    <!-- NOSOTROS -->
+    <section class="section about" id="nosotros">
+      <div>
+        <p class="section-tag">NIGHTZONE</p>
+
+        <h2>
+          Más que una
+          <span>discoteca.</span>
+        </h2>
+
+        <p>
+          Creamos experiencias nocturnas combinando música, tecnología,
+          iluminación y los mejores DJs de la ciudad.
+        </p>
+      </div>
+
+      <div class="stats">
+        <div>
+          <strong>5+</strong>
+          <span>Años</span>
+        </div>
+
+        <div>
+          <strong>50K</strong>
+          <span>Clientes</span>
+        </div>
+
+        <div>
+          <strong>200+</strong>
+          <span>Eventos</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="logo">NIGHT<span>ZONE</span></div>
+
+      <p>© 2026 NightZone. Todos los derechos reservados.</p>
+
+      <div class="social">
+        <a href="#">Instagram</a>
+        <a href="#">TikTok</a>
+        <a href="#">Facebook</a>
+      </div>
+    </footer>
+
+    <!-- MODAL -->
+    <div class="modal" id="modal">
+      <div class="modal-content">
+        <button class="close" onclick="closeModal()">×</button>
+
+        <h2>Reservar entrada</h2>
+
+        <p id="selectedEvent"></p>
+
+        <input type="text" id="name" placeholder="Tu nombre" />
+
+        <input
+          type="number"
+          id="tickets"
+          placeholder="Cantidad de entradas"
+          min="1"
+          max="10"
+        />
+
+        <button class="btn primary" onclick="confirmReservation()">
+          Confirmar reserva
+        </button>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
   </body>
 </html>
